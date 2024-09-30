@@ -12,7 +12,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return view('cliente.index');
+        $datos['clientes']=Cliente::paginate();
+        return view('cliente.index',$datos);
     }
 
     /**
@@ -20,7 +21,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('cliente.create');
     }
 
     /**
@@ -28,7 +29,8 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosCliente = request()->except('_token');
+        Cliente::insert($datosCliente);
     }
 
     /**
@@ -42,24 +44,30 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cliente $cliente)
+    public function edit($id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        return view('cliente.edit', compact('cliente'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(Request $request, $id)
     {
-        //
+        $datosCliente = request()->except(['_token', '_method']);
+        Cliente::where('ID','=',$id)->update($datosCliente);
+
+        $cliente = Cliente::findOrFail($id);
+        return redirect('cliente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cliente $cliente)
+    public function destroy($id)
     {
-        //
+        Cliente::where('ID','=',$id)->delete();
+        return redirect('cliente');
     }
 }
