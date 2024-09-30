@@ -12,7 +12,7 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $datos['empleados']=Empleado::paginate(5);
+        $datos['empleados']=Empleado::paginate();
         return view('empleado.index',$datos);
     }
 
@@ -44,17 +44,22 @@ class EmpleadoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Empleado $empleado)
+    public function edit($id)
     {
-        //
+        $empleado = Empleado::findOrFail($id);
+        return view('empleado.edit', compact('empleado'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Empleado $empleado)
+    public function update(Request $request, $id)
     {
-        //
+        $datosEmpleado = request()->except(['_token', '_method']);
+        Empleado::where('ID','=',$id)->update($datosEmpleado);
+
+        $empleado = Empleado::findOrFail($id);
+        return redirect('empleado');
     }
 
     /**
@@ -62,7 +67,7 @@ class EmpleadoController extends Controller
      */
     public function destroy($id)
     {
-        Empleado::destroy($id);
+        Empleado::where('ID','=',$id)->delete();
         return redirect('empleado');
     }
 }

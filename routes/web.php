@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\ProveedorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +21,8 @@ Route::get('/', function () {
 });
 
 Route::resource('empleado', EmpleadoController::class);
+Route::resource('cliente', ClienteController::class);
+Route::resource('proveedor', ProveedorController::class);
 
 
 Route::view('/plantilla/navbar', '/plantilla/navbar');
