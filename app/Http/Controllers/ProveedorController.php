@@ -12,8 +12,8 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        // $datos['proveedores']=Proveedor::paginate();
-        return view('proveedor.index');
+        $datos['proveedores']=Proveedor::paginate();
+        return view('proveedor.index', $datos);
     }
 
     /**
@@ -29,7 +29,8 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosProveedor = request()->except('_token');
+        Proveedor::insert($datosProveedor);
     }
 
     /**
@@ -43,24 +44,30 @@ class ProveedorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Proveedor $proveedor)
+    public function edit($id)
     {
-        //
+        $proveedor = Proveedor::findOrFail($id);
+        return view('proveedor.edit', compact('proveedor'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Proveedor $proveedor)
+    public function update(Request $request, $id)
     {
-        //
+        $datosProveedor = request()->except(['_token', '_method']);
+        Proveedor::where('ID','=',$id)->update($datosProveedor);
+
+        $proveedor = Proveedor::findOrFail($id);
+        return redirect('proveedor');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Proveedor $proveedor)
+    public function destroy($id)
     {
-        //
+        Proveedor::where('ID','=',$id)->delete();
+        return redirect('proveedor');
     }
 }
