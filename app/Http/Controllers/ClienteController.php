@@ -22,7 +22,8 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('cliente.create');
+        $cliente = new Cliente(); // Objeto vacío
+        return view('cliente.create', compact('cliente'));
     }
 
     /**

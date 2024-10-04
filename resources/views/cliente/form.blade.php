@@ -6,10 +6,9 @@
 </div>
 <div class="mb-5">
     <label for="foto" class="block mb-2 text-sm font-medium text-white dark:text-white">Subir imagen: </label>
-    @if (isset($cliente))
-        <img width="200" src="{{asset('storage').'/'.$cliente->foto}}" alt="imagen del Cliente"> 
+    @if(isset($cliente->foto))
+        <img width="200" src="{{ asset('storage/' . $cliente->foto) }}" alt="imagen del Cliente">
     @endif
-    
     <input id="foto" name="foto" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file">
 </div>
 <div class="mb-5">
