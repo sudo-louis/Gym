@@ -5,6 +5,11 @@
         value="{{isset($cliente->nombre)?$cliente->nombre:''}}" rerquired />
 </div>
 <div class="mb-5">
+    <label for="foto" class="block mb-2 text-sm font-medium text-white dark:text-white">Subir imagen: </label>
+    <img width="200" src="{{asset('storage').'/'.$cliente->foto}}" alt="imagen del Cliente">    
+    <input id="foto" name="foto" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file">
+</div>
+<div class="mb-5">
     <label class="block mb-2 text-sm font-medium text-white dark:text-white" for="apellido">Apellidos: </label>
     <input name="apellido" id="apellido" type="text"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ClienteController extends Controller
 {
@@ -30,7 +31,12 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $datosCliente = request()->except('_token');
+        if ($request->hasFile('foto')) {
+            $datosCliente['foto']=$request->file('foto')->store('uploads', 'public');
+        }
+
         Cliente::insert($datosCliente);
+        return redirect()->route('cliente.index')->with('success', 'Cliente registrado con éxito.');
     }
 
     /**
@@ -38,7 +44,7 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //
+        
     }
 
     /**
@@ -56,10 +62,15 @@ class ClienteController extends Controller
     public function update(Request $request, $id)
     {
         $datosCliente = request()->except(['_token', '_method']);
-        Cliente::where('ID','=',$id)->update($datosCliente);
+        if ($request->hasFile('foto')) {
+            $cliente = Cliente::findOrFail($id);
+            Storage::delete('public/'.$cliente->foto);
+            $datosCliente['foto']=$request->file('foto')->store('uploads', 'public');
+        }
 
+        Cliente::where('ID','=',$id)->update($datosCliente);
         $cliente = Cliente::findOrFail($id);
-        return redirect('cliente');
+        return redirect()->route('cliente.index')->with('success', 'Cliente actualizado con éxito.');
     }
 
     /**

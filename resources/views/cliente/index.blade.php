@@ -19,6 +19,9 @@
                         #
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Imagen
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Nombre
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -47,10 +50,15 @@
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{$cliente->ID}}
                         </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <center>
+                                <img width="200" src="{{asset('storage').'/'.$cliente->foto}}" alt="imagen del Cliente">
+                            </center>
+                        </th>
                         <td class="px-6 py-4">
                             {{$cliente->nombre}}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4">  
                             {{$cliente->apellido}}
                         </td>
                         <td class="px-6 py-4">
