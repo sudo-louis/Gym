@@ -30,6 +30,16 @@ class ClienteController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request){
+        $request->validate([
+            'nombre' => 'required|string|max:50',
+            'apellido' => 'required|string|max:50',
+            'telefono' => 'required|numeric|max:15',
+            'correo' => 'required|email|unique:clientes,correo',
+            'fecha_registro' => 'required|date',
+            'status' => 'nullable|string',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+        ]);
+
         $datosCliente = request()->except('_token');
         $imagen = $request->file('foto');
         if ($imagen && $imagen->isValid()) {
@@ -63,8 +73,17 @@ class ClienteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
+        $request->validate([
+            'nombre' => 'required|string|max:50',
+            'apellido' => 'required|string|max:50',
+            'telefono' => 'required|numeric|max:15',
+            'correo' => 'required|email|unique:clientes,correo',
+            'fecha_registro' => 'required|date', // Validación de fecha
+            'status' => 'nullable|string', // Opcional, texto
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048' // Imagen opcional
+        ]);
+
         $datosCliente = request()->except(['_token', '_method']);
         $imagen = $request->file('foto');
         if ($imagen && $imagen->isValid()) {
