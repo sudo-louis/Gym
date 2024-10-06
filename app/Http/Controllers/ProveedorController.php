@@ -12,7 +12,7 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        $datos['proveedores']=Proveedor::paginate();
+        $datos['proveedores']=Proveedor::paginate(5);
         return view('proveedor.index', $datos);
     }
 
@@ -22,6 +22,7 @@ class ProveedorController extends Controller
     public function create()
     {
         return view('proveedor.create');
+        return view('proveedor.create', compact('proveedor'));
     }
 
     /**
@@ -30,7 +31,16 @@ class ProveedorController extends Controller
     public function store(Request $request)
     {
         $datosProveedor = request()->except('_token');
+        $imagen = $request->file('foto');
+        if ($imagen && $imagen->isValid()) {
+            $rutaCarpeta = 'storage/uploads';
+            $nombreImagen = $imagen->getClientOriginalName();
+            $request->file('foto')->move($rutaCarpeta, $nombreImagen);
+            $datosProveedor['foto'] = $nombreImagen;
+        }
+
         Proveedor::insert($datosProveedor);
+        return redirect()->route('proveedor.index')->with('success', 'proveedor registrado con éxito.');
     }
 
     /**
@@ -56,10 +66,17 @@ class ProveedorController extends Controller
     public function update(Request $request, $id)
     {
         $datosProveedor = request()->except(['_token', '_method']);
-        Proveedor::where('ID','=',$id)->update($datosProveedor);
+        $imagen = $request->file('foto');
+        if ($imagen && $imagen->isValid()) {
+            $rutaCarpeta = 'storage/uploads';
+            $nombreImagen = $imagen->getClientOriginalName();
+            $request->file('foto')->move($rutaCarpeta, $nombreImagen);
+            $datosProveedor['foto'] = $nombreImagen;
+        }
 
+        Proveedor::where('ID','=',$id)->update($datosProveedor);
         $proveedor = Proveedor::findOrFail($id);
-        return redirect('proveedor');
+        return redirect()->route('proveedor.index')->with('success', 'proveedor actualizado con éxito.');
     }
 
     /**

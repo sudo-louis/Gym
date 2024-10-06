@@ -19,6 +19,9 @@
                         #
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Logo
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Nombre de la empresa
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -43,6 +46,11 @@
                     <tr class="text-center odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{$proveedor->ID}}
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <center>
+                                <img src="{{asset('storage/uploads').'/'.$proveedor->foto}}" width="100" alt="LOGO">
+                            </center>
                         </th>
                         <td class="px-6 py-4">
                             {{$proveedor->nombre_empresa}}
@@ -71,6 +79,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{$proveedores->links()}}
     </div>
 </body>
 </html>
