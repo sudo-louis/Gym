@@ -19,7 +19,7 @@
                         #
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Imagen
+                        Foto
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Nombre
@@ -52,7 +52,7 @@
                         </th>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <center>
-                                <img src="{{asset('storage/uploads').'/'.$empleado->foto}}" width="200" alt="imagen del empleado">
+                                <img src="{{asset('storage/uploads').'/'.$empleado->foto}}" width="100" alt="imagen del empleado">
                             </center>
                         </th>
                         <td class="px-6 py-4">

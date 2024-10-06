@@ -47,7 +47,7 @@ class EmpleadoController extends Controller
      */
     public function show(Empleado $empleado)
     {
-        //
+        
     }
 
     /**
