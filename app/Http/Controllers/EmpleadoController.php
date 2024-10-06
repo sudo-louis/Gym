@@ -22,20 +22,20 @@ class EmpleadoController extends Controller
     public function create()
     {
         return view('empleado.create');
+        return view('empleado.create', compact('empleado'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $datosEmpleado = request()->except('_token');
         $imagen = $request->file('foto');
         if ($imagen && $imagen->isValid()) {
             $rutaCarpeta = 'storage/uploads';
             $nombreImagen = $imagen->getClientOriginalName();
             $request->file('foto')->move($rutaCarpeta, $nombreImagen);
-            $datosCliente['foto'] = $nombreImagen;
+            $datosEmpleado['foto'] = $nombreImagen;
         }
 
         Empleado::insert($datosEmpleado);
