@@ -29,6 +29,16 @@ class EmpleadoController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request) {
+        $request->validate([
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'nombre' => 'required|string|max:50',
+            'apellido' => 'required|string|max:50',
+            'fecha_contratacion' => 'required|date',
+            'telefono' => 'required|numeric|max:15',
+            'correo' => 'required|email|unique:clientes,correo|max:100',
+            'rol' => 'required|string|max:50',
+        ]);
+
         $datosEmpleado = request()->except('_token');
         $imagen = $request->file('foto');
         if ($imagen && $imagen->isValid()) {
@@ -63,6 +73,16 @@ class EmpleadoController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id) {
+        $request->validate([
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'nombre' => 'required|string|max:50',
+            'apellido' => 'required|string|max:50',
+            'fecha_contratacion' => 'required|date',
+            'telefono' => 'required|numeric|max:15',
+            'correo' => 'required|email|unique:clientes,correo|max:100',
+            'rol' => 'required|string|max:50',
+        ]);
+
         $datosEmpleado = request()->except(['_token', '_method']);
         $imagen = $request->file('foto');
         if ($imagen && $imagen->isValid()) {

@@ -28,8 +28,16 @@ class ProveedorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+        $request->validate([
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'nombre_empresa' => 'required|string|max:100',
+            'nombre_contacto' => 'required|string|max:50',
+            'telefono' => 'required|numeric|max:15',
+            'correo' => 'required|email|unique:clientes,correo|max:100',
+            'productos_suministrados' => 'required|string',
+        ]);
+
         $datosProveedor = request()->except('_token');
         $imagen = $request->file('foto');
         if ($imagen && $imagen->isValid()) {
@@ -63,8 +71,16 @@ class ProveedorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
+        $request->validate([
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'nombre_empresa' => 'required|string|max:100',
+            'nombre_contacto' => 'required|string|max:50',
+            'telefono' => 'required|numeric|max:15',
+            'correo' => 'required|email|unique:clientes,correo|max:100',
+            'productos_suministrados' => 'required|string',
+        ]);
+
         $datosProveedor = request()->except(['_token', '_method']);
         $imagen = $request->file('foto');
         if ($imagen && $imagen->isValid()) {
