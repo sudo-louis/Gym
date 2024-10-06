@@ -13,7 +13,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $datos['clientes']=Cliente::paginate();
+        $datos['clientes']=Cliente::paginate(5);
         return view('cliente.index',$datos);
     }
 
@@ -29,11 +29,14 @@ class ClienteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $datosCliente = request()->except('_token');
-        if ($request->hasFile('foto')) {
-            $datosCliente['foto']=$request->file('foto')->store('uploads', 'public');
+        $imagen = $request->file('foto');
+        if ($imagen && $imagen->isValid()) {
+            $rutaCarpeta = 'storage/uploads';
+            $nombreImagen = $imagen->getClientOriginalName();
+            $request->file('foto')->move($rutaCarpeta, $nombreImagen);
+            $datosCliente['foto'] = $nombreImagen;
         }
 
         Cliente::insert($datosCliente);
@@ -63,10 +66,12 @@ class ClienteController extends Controller
     public function update(Request $request, $id)
     {
         $datosCliente = request()->except(['_token', '_method']);
-        if ($request->hasFile('foto')) {
-            $cliente = Cliente::findOrFail($id);
-            Storage::delete('public/'.$cliente->foto);
-            $datosCliente['foto']=$request->file('foto')->store('uploads', 'public');
+        $imagen = $request->file('foto');
+        if ($imagen && $imagen->isValid()) {
+            $rutaCarpeta = 'storage/uploads';
+            $nombreImagen = $imagen->getClientOriginalName();
+            $request->file('foto')->move($rutaCarpeta, $nombreImagen);
+            $datosCliente['foto'] = $nombreImagen;
         }
 
         Cliente::where('ID','=',$id)->update($datosCliente);

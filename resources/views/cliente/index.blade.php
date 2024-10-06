@@ -52,13 +52,13 @@
                         </th>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <center>
-                                <img width="200" src="{{asset('storage/').$cliente->foto}}" alt="imagen del Cliente">
+                                <img src="{{asset('storage/uploads').'/'.$cliente->foto}}" width="200" alt="imagen del Cliente">
                             </center>
                         </th>
                         <td class="px-6 py-4">
                             {{$cliente->nombre}}
                         </td>
-                        <td class="px-6 py-4">  
+                        <td class="px-6 py-4">
                             {{$cliente->apellido}}
                         </td>
                         <td class="px-6 py-4">
@@ -85,6 +85,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{$clientes->links()}}
     </div>
 </body>
 </html>
