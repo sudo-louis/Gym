@@ -19,6 +19,9 @@
                         #
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Imagen
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Nombre
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -46,6 +49,11 @@
                     <tr class="text-center odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{$empleado->ID}}
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <center>
+                                <img src="{{asset('storage/uploads').'/'.$empleado->foto}}" width="200" alt="imagen del empleado">
+                            </center>
                         </th>
                         <td class="px-6 py-4">
                             {{$empleado->nombre}}
@@ -77,6 +85,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{$empleados->links()}}
     </div>
 </body>
 </html>

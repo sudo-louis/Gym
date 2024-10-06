@@ -12,7 +12,7 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $datos['empleados']=Empleado::paginate();
+        $datos['empleados']=Empleado::paginate(5);
         return view('empleado.index',$datos);
     }
 
@@ -30,7 +30,16 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
         $datosEmpleado = request()->except('_token');
+        $imagen = $request->file('foto');
+        if ($imagen && $imagen->isValid()) {
+            $rutaCarpeta = 'storage/uploads';
+            $nombreImagen = $imagen->getClientOriginalName();
+            $request->file('foto')->move($rutaCarpeta, $nombreImagen);
+            $datosCliente['foto'] = $nombreImagen;
+        }
+
         Empleado::insert($datosEmpleado);
+        return redirect()->route('empleado.index')->with('success', 'Cliente registrado con éxito.');
     }
 
     /**
@@ -53,13 +62,19 @@ class EmpleadoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         $datosEmpleado = request()->except(['_token', '_method']);
-        Empleado::where('ID','=',$id)->update($datosEmpleado);
+        $imagen = $request->file('foto');
+        if ($imagen && $imagen->isValid()) {
+            $rutaCarpeta = 'storage/uploads';
+            $nombreImagen = $imagen->getClientOriginalName();
+            $request->file('foto')->move($rutaCarpeta, $nombreImagen);
+            $datosEmpleado['foto'] = $nombreImagen;
+        }
 
+        Empleado::where('ID','=',$id)->update($datosEmpleado);
         $empleado = Empleado::findOrFail($id);
-        return redirect('empleado');
+        return redirect()->route('empleado.index')->with('success', 'Empleado actualizado con éxito.');
     }
 
     /**
