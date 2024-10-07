@@ -33,7 +33,7 @@ class ProveedorController extends Controller
             'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'nombre_empresa' => 'required|string|max:100',
             'nombre_contacto' => 'required|string|max:50',
-            'telefono' => 'required|numeric|max:15',
+            'telefono' => 'required|numeric',
             'correo' => 'required|email|unique:clientes,correo|max:100',
             'productos_suministrados' => 'required|string',
         ]);
@@ -76,8 +76,8 @@ class ProveedorController extends Controller
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,|max:2048',
             'nombre_empresa' => 'required|string|max:100',
             'nombre_contacto' => 'required|string|max:50',
-            'telefono' => 'required|numeric|max:15',
-            'correo' => 'required|email|unique:clientes,correo|max:100',
+            'telefono' => 'required|numeric',
+            'correo' => 'required|email|max:100',
             'productos_suministrados' => 'required|string',
         ]);
 

@@ -33,7 +33,7 @@ class ClienteController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:50',
             'apellido' => 'required|string|max:50',
-            'telefono' => 'required|numeric|max:15',
+            'telefono' => 'required|numeric',
             'correo' => 'required|email|unique:clientes,correo',
             'fecha_registro' => 'required|date',
             'status' => 'nullable|string',
@@ -77,8 +77,8 @@ class ClienteController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:50',
             'apellido' => 'required|string|max:50',
-            'telefono' => 'required|numeric|max:15',
-            'correo' => 'required|email|unique:clientes,correo',
+            'telefono' => 'required|numeric',
+            'correo' => 'required|email',
             'fecha_registro' => 'required|date',
             'status' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'

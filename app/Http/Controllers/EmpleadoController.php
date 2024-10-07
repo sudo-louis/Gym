@@ -34,7 +34,7 @@ class EmpleadoController extends Controller
             'nombre' => 'required|string|max:50',
             'apellido' => 'required|string|max:50',
             'fecha_contratacion' => 'required|date',
-            'telefono' => 'required|numeric|max:15',
+            'telefono' => 'required|numeric',
             'correo' => 'required|email|unique:clientes,correo|max:100',
             'rol' => 'required|string|max:50',
         ]);
@@ -78,8 +78,8 @@ class EmpleadoController extends Controller
             'nombre' => 'required|string|max:50',
             'apellido' => 'required|string|max:50',
             'fecha_contratacion' => 'required|date',
-            'telefono' => 'required|numeric|max:15',
-            'correo' => 'required|email|unique:clientes,correo|max:100',
+            'telefono' => 'required|numeric',
+            'correo' => 'required|email|max:100',
             'rol' => 'required|string|max:50',
         ]);
 
