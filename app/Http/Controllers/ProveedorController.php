@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Proveedor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProveedorController extends Controller
 {
@@ -29,14 +30,14 @@ class ProveedorController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request) {
-        $request->validate([
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'nombre_empresa' => 'required|string|max:100',
-            'nombre_contacto' => 'required|string|max:50',
-            'telefono' => 'required|numeric',
-            'correo' => 'required|email|unique:clientes,correo|max:100',
-            'productos_suministrados' => 'required|string',
-        ]);
+        // $request->validate([
+        //     'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        //     'nombre_empresa' => 'required|string|max:100',
+        //     'nombre_contacto' => 'required|string|max:50',
+        //     'telefono' => 'required|numeric',
+        //     'correo' => 'required|email|unique:clientes,correo|max:100',
+        //     'productos_suministrados' => 'required|string',
+        // ]);
 
         $datosProveedor = request()->except('_token');
         $imagen = $request->file('foto');
@@ -72,14 +73,14 @@ class ProveedorController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id) {
-        $request->validate([
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,|max:2048',
-            'nombre_empresa' => 'required|string|max:100',
-            'nombre_contacto' => 'required|string|max:50',
-            'telefono' => 'required|numeric',
-            'correo' => 'required|email|max:100',
-            'productos_suministrados' => 'required|string',
-        ]);
+        // $request->validate([
+        //     'foto' => 'nullable|image|mimes:jpeg,png,jpg,|max:2048',
+        //     'nombre_empresa' => 'required|string|max:100',
+        //     'nombre_contacto' => 'required|string|max:50',
+        //     'telefono' => 'required|numeric',
+        //     'correo' => 'required|email|max:100',
+        //     'productos_suministrados' => 'required|string',
+        // ]);
 
         $datosProveedor = request()->except(['_token', '_method']);
         $imagen = $request->file('foto');

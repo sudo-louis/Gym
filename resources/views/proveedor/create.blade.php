@@ -19,7 +19,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{URL('/proveedor')}}" method="POST" class="max-w-sm mx-auto text-center mt-5">
+    <form action="{{URL('/proveedor')}}" enctype="multipart/form-data" method="POST" class="max-w-sm mx-auto text-center mt-5">
         @csrf
         @include('proveedor.form')
     </form>

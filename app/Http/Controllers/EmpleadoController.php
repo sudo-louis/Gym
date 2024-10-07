@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empleado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EmpleadoController extends Controller
 {

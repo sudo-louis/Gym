@@ -1,7 +1,7 @@
 <div class="mb-5">
     <label for="foto" class="block mb-2 text-sm font-medium text-white dark:text-white">Subir imagen: </label>
     @if(isset($proveedor->foto))
-        <img src="{{ asset('storage'.'/'.$proveedor->foto) }}" width="200" alt="imagen del Proveedor">
+        <img src="{{ asset('storage'.'/'.$proveedor->foto) }}" alt="imagen del Proveedor">
     @endif
     <input id="foto" name="foto" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file">
 </div>
