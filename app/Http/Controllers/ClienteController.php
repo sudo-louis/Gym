@@ -79,9 +79,9 @@ class ClienteController extends Controller
             'apellido' => 'required|string|max:50',
             'telefono' => 'required|numeric|max:15',
             'correo' => 'required|email|unique:clientes,correo',
-            'fecha_registro' => 'required|date', // Validación de fecha
-            'status' => 'nullable|string', // Opcional, texto
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048' // Imagen opcional
+            'fecha_registro' => 'required|date',
+            'status' => 'nullable|string',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
         $datosCliente = request()->except(['_token', '_method']);

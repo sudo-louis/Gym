@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ST-Johns</title>
 </head>
-
 <body>
     <div style="background-image: url('storage/banner.jpg'); height: 57rem; background-repeat: no-repeat; background-size: cover; background-position: center center;"><br /><br /><br /><br /><br /><br /><br /><br />
         <div>

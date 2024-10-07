@@ -73,7 +73,7 @@ class ProveedorController extends Controller
      */
     public function update(Request $request, $id) {
         $request->validate([
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,|max:2048',
             'nombre_empresa' => 'required|string|max:100',
             'nombre_contacto' => 'required|string|max:50',
             'telefono' => 'required|numeric|max:15',
