@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProveedorController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,7 @@ Route::get('/', function () {
 Route::resource('empleado', EmpleadoController::class);
 Route::resource('cliente', ClienteController::class);
 Route::resource('proveedor', ProveedorController::class);
+Route::resource('producto', ProductoController::class);
 
 
 Route::view('/plantilla/navbar', '/plantilla/navbar');
@@ -35,4 +37,4 @@ Route::view('/indexadmin/indexadmin', '/indexadmin/indexadmin');
 
 Route::view('/login/login', '/login/login');
 
-Route::view('/producto/producto', '/producto/producto');
+Route::view('/inventario/inventario', '/inventario/inventario');
