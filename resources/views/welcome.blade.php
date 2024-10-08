@@ -92,7 +92,7 @@
         </div>
     </div>
     <div style="margin: 4rem 12rem;">
-        <h1 class="text-center mb-4 text-4xl font-bold leading-none tracking-tight text-white md:text-5xl lg:text-6xl dark:text-white">Conoce las clases <span class="text-blue-600 dark:text-blue-500">Impartidas nuestros</span> Instructores</h1><br />
+        <h1 class="text-center mb-4 text-4xl font-bold leading-none tracking-tight text-white md:text-5xl lg:text-6xl dark:text-white">Conoce las clases <span class="text-blue-600 dark:text-blue-500">Impartidas por nuestros</span> Instructores</h1><br />
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div class="grid gap-4">
                 <div>
