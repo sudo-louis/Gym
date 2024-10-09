@@ -25,6 +25,12 @@ Route::resource('empleado', EmpleadoController::class);
 Route::resource('cliente', ClienteController::class);
 Route::resource('proveedor', ProveedorController::class);
 Route::resource('producto', ProductoController::class);
+Route::resource('producto', ProductoController::class);
+
+Route::view('/login/login', '/login/login');
+Route::view('/login/register', '/login/register');
+
+
 
 
 Route::view('/plantilla/navbar', '/plantilla/navbar');
@@ -35,6 +41,5 @@ Route::view('/planes/planes', '/planes/planes');
 
 Route::view('/indexadmin/indexadmin', '/indexadmin/indexadmin');
 
-Route::view('/login/login', '/login/login');
 
 Route::view('/inventario/inventario', '/inventario/inventario');

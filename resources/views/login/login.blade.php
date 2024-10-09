@@ -40,7 +40,7 @@
                         </div>
                         <button type="submit" class="w-full px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Iniciar Sesión</button>
                         <div class="text-sm font-medium text-gray-900 dark:text-white">
-                            Aún no tienes cuenta? <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">Crea una cuenta nueva</a>
+                            Aún no tienes cuenta? <a href="{{url('/login/register')}}" class="text-blue-600 hover:underline dark:text-blue-500">Crea una cuenta nueva</a>
                         </div>
                     </form>
                 </div>
