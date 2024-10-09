@@ -4,6 +4,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,10 +28,11 @@ Route::resource('proveedor', ProveedorController::class);
 Route::resource('producto', ProductoController::class);
 Route::resource('producto', ProductoController::class);
 
-Route::view('/login/login', '/login/login');
-Route::view('/login/register', '/login/register');
-
-
+Route::view('/login/login','/login/login')->name('login');
+Route::view('/login/register','/login/register')->name('register');
+Route::post('/validar-registro',[LoginController::class, 'register'])->name('validar-registro');
+Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-sesion');
+Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
 
 Route::view('/plantilla/navbar', '/plantilla/navbar');
