@@ -22,16 +22,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('empleado', EmpleadoController::class);
-Route::resource('cliente', ClienteController::class);
-Route::resource('proveedor', ProveedorController::class);
-Route::resource('producto', ProductoController::class);
-Route::resource('producto', ProductoController::class);
+Route::resource('empleado', EmpleadoController::class)->middleware('auth');
+Route::resource('cliente', ClienteController::class)->middleware('auth');
+Route::resource('proveedor', ProveedorController::class)->middleware('auth');
+Route::resource('producto', ProductoController::class)->middleware('auth');
+Route::resource('producto', ProductoController::class)->middleware('auth');
 
 Route::view('/login/login','/login/login')->name('login');
 Route::view('/login/register','/login/register')->name('register');
+Route::view('/indexadmin/indexadmin','/indexadmin/indexadmin')->middleware('auth')->name('indexadmin');
 Route::post('/validar-registro',[LoginController::class, 'register'])->name('validar-registro');
-Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-sesion');
+Route::post('/indexadmin/indexadmin',[LoginController::class, 'login'])->name('indexadmin');
 Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
 
@@ -40,8 +41,5 @@ Route::view('/plantilla/footer', '/plantilla/footer');
 Route::view('/plantilla/navegacionClient', '/plantilla/navegacionClient');
 
 Route::view('/planes/planes', '/planes/planes');
-
-Route::view('/indexadmin/indexadmin', '/indexadmin/indexadmin');
-
 
 Route::view('/inventario/inventario', '/inventario/inventario');
