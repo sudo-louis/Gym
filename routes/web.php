@@ -28,10 +28,7 @@ Route::resource('proveedor', ProveedorController::class)->middleware('auth');
 Route::resource('producto', ProductoController::class)->middleware('auth');
 Route::resource('producto', ProductoController::class)->middleware('auth');
 
-Route::view('/login/login','/login/login')->name('login');
-Route::view('/login/register','/login/register')->name('register');
 Route::view('/indexadmin/indexadmin','/indexadmin/indexadmin')->middleware('auth')->name('indexadmin');
-Route::post('/validar-registro',[LoginController::class, 'register'])->name('validar-registro');
 Route::post('/indexadmin/indexadmin',[LoginController::class, 'login'])->name('indexadmin');
 Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 

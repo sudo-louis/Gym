@@ -1,148 +1,53 @@
-@include('/plantilla/navegacionClient')
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ST-Johns</title>
+    <title>Iniciar Sesión</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
 </head>
-<body>
-    <div style="background-image: url('storage/banner.jpg'); height: 57rem; background-repeat: no-repeat; background-size: cover; background-position: center center;"><br /><br /><br /><br /><br /><br /><br /><br />
-        <div>
-            <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl dark:text-white text-center">
-                Entrena 
-                <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
-                con Nosotros
-                </span>
-            </h1>
-        </div>
-        <div style="margin: 2rem 11rem;">
-            <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2 bg-white dark:bg-gray-800">
-                <figure
-                    class="flex flex-col items-center justify-center p-8 text-center bg-white border-b border-gray-200 rounded-t-lg md:rounded-t-none md:rounded-ss-lg md:border-e dark:bg-gray-800 dark:border-gray-700">
-                    <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Very easy this was to integrate
-                        </h3>
-                        <p class="my-4">If you care for your time, I hands down would go with this."</p>
-                    </blockquote>
-                    <figcaption class="flex items-center justify-center ">
-                        <img class="rounded-full w-9 h-9"
-                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
-                            alt="profile picture">
-                        <div class="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
-                            <div>Bonnie Green</div>
-                            <div class="text-sm text-gray-500 dark:text-gray-400 ">Instructor Certificado</div>
-                        </div>
-                    </figcaption>
-                </figure>
-                <figure
-                    class="flex flex-col items-center justify-center p-8 text-center bg-white border-b border-gray-200 md:rounded-se-lg dark:bg-gray-800 dark:border-gray-700">
-                    <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Solid foundation for any project
-                        </h3>
-                        <p class="my-4">Designing with Figma components that can be easily translated to the utility
-                            classes of Tailwind CSS is a huge timesaver!"</p>
-                    </blockquote>
-                    <figcaption class="flex items-center justify-center ">
-                        <img class="rounded-full w-9 h-9"
-                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png"
-                            alt="profile picture">
-                        <div class="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
-                            <div>Roberta Casas</div>
-                            <div class="text-sm text-gray-500 dark:text-gray-400">Intructor Certificado</div>
-                        </div>
-                    </figcaption>
-                </figure>
-                <figure
-                    class="flex flex-col items-center justify-center p-8 text-center bg-white border-b border-gray-200 md:rounded-es-lg md:border-b-0 md:border-e dark:bg-gray-800 dark:border-gray-700">
-                    <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Mindblowing workflow</h3>
-                        <p class="my-4">Aesthetically, the well designed components are beautiful and will undoubtedly
-                            level up your next application."</p>
-                    </blockquote>
-                    <figcaption class="flex items-center justify-center ">
-                        <img class="rounded-full w-9 h-9"
-                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
-                            alt="profile picture">
-                        <div class="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
-                            <div>Jese Leos</div>
-                            <div class="text-sm text-gray-500 dark:text-gray-400">Instructor Certificado</div>
-                        </div>
-                    </figcaption>
-                </figure>
-                <figure
-                    class="flex flex-col items-center justify-center p-8 text-center bg-white border-gray-200 rounded-b-lg md:rounded-se-lg dark:bg-gray-800 dark:border-gray-700">
-                    <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Efficient Collaborating</h3>
-                        <p class="my-4">You have many examples that can be used to create a fast prototype for your
-                            team."</p>
-                    </blockquote>
-                    <figcaption class="flex items-center justify-center ">
-                        <img class="rounded-full w-9 h-9"
-                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/joseph-mcfall.png"
-                            alt="profile picture">
-                        <div class="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
-                            <div>Joseph McFall</div>
-                            <div class="text-sm text-gray-500 dark:text-gray-400">Instructor Certificado</div>
-                        </div>
-                    </figcaption>
-                </figure>
+<body style="background-color: #374151">
+    <section class="bg-gray-50 dark:bg-gray-900 m-4 rounded-lg">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
+            <div class="flex flex-col justify-center">
+                <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Inicia sesión con tus credenciales</h1>
+                <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Para nosotros la seguridad es importante, por favor ingresa tu correo electrónico seguido de tu contraseña para acceder.</p>
             </div>
-        </div>
-    </div>
-    <div style="margin: 4rem 12rem;">
-        <h1 class="text-center mb-4 text-4xl font-bold leading-none tracking-tight text-white md:text-5xl lg:text-6xl dark:text-white">Conoce las clases <span class="text-blue-600 dark:text-blue-500">Impartidas por nuestros</span> Instructores</h1><br />
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="grid gap-4">
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="{{URL('storage/zumba.jpg')}}" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="{{URL('storage/box.jpg')}}" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="{{URL('storage/spinning.jpg')}}" alt="">
-                </div>
-            </div>
-            <div class="grid gap-4">
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="{{URL('storage/cardio.jpg')}}" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="{{URL('storage/pilates.avif')}}" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="{{URL('storage/equipo.jpg')}}" alt="">
-                </div>
-            </div>
-            <div class="grid gap-4">
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="{{URL('storage/gap.jpg')}}" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="{{URL('storage/box.webp')}}" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="{{URL('storage/yoga.jpg')}}" alt="">
-                </div>
-            </div>
-            <div class="grid gap-4">
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="{{URL('storage/crossfit.jpg')}}" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="{{URL('storage/pesas.avif')}}" alt="">
-                </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="{{URL('storage/calistenia.png')}}" alt="">
+            <div>
+                <div class="w-full lg:max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow-xl dark:bg-gray-800">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+                        Inicia Sesión en ST-Johns
+                    </h2>
+                    <form class="mt-8 space-y-6" action="{{route('indexadmin')}}" method="POST">
+                        @csrf
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu email</label>
+                            <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="correo@gmail.com" required />
+                        </div>
+                        <div>
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu contraseña</label>
+                            <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="remember" aria-describedby="remember" name="remember" type="checkbox" class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" required />
+                            </div>
+                            <div class="ms-3 text-sm">
+                            <label for="remember" class="font-medium text-gray-500 dark:text-gray-400">Recordar este dispositivo</label>
+                            </div>
+                            <a href="#" class="ms-auto text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Olvidé mi contraseña!</a>
+                        </div>
+                        <button type="submit" class="w-full px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Iniciar Sesión</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
-
+    </section>
     <footer>
         @include('plantilla/footer')
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>
 </html>
