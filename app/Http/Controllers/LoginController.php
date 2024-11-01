@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller {
 
+    public function __construct() {
+        // Agrega encabezados para evitar el caché
+        $this->middleware(function ($request, $next) {
+            header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+            header("Pragma: no-cache");
+            header("Expires: 0");
+            return $next($request);
+        });
+    }
+
     public function login(Request $request) {
         $credentials = [
             "email" => $request->email,

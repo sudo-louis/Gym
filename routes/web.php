@@ -21,17 +21,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::resource('empleado', EmpleadoController::class)->middleware('auth');
 Route::resource('cliente', ClienteController::class)->middleware('auth');
 Route::resource('proveedor', ProveedorController::class)->middleware('auth');
 Route::resource('producto', ProductoController::class)->middleware('auth');
-Route::resource('servicio', ProductoController::class)->middleware('auth');
-
-Route::view('/indexadmin/indexadmin','/indexadmin/indexadmin')->middleware('auth')->name('indexadmin');
+// Route::resource('servicio', ServicioController::class)->middleware('auth');
+Route::get('/indexadmin/indexadmin', function () {
+    return view('/indexadmin/indexadmin');
+})->middleware('auth')->name('indexadmin');
 Route::post('/indexadmin/indexadmin',[LoginController::class, 'login'])->name('indexadmin');
-Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
+Route::middleware(['web'])->group(function () {
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    // Otras rutas
+});
 
 Route::view('/plantilla/navbar', '/plantilla/navbar');
 Route::view('/plantilla/footer', '/plantilla/footer');
-
