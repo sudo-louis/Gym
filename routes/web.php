@@ -32,7 +32,6 @@ Route::get('/indexadmin/indexadmin', function () {
 Route::post('/indexadmin/indexadmin',[LoginController::class, 'login'])->name('indexadmin');
 Route::middleware(['web'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-    // Otras rutas
 });
 
 Route::view('/plantilla/navbar', '/plantilla/navbar');
