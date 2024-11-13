@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Proveedor;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -12,8 +13,11 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $datos['productos']=Producto::paginate(5);
-        return view('producto.index',$datos);
+        $productos=Producto::paginate(5);
+
+        $prdb = Proveedor::all();
+
+        return view('producto.index',compact("productos", "prdb"));
     }
 
     /**
@@ -21,8 +25,8 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('producto.create');
-        return view('producto.create', compact('producto'));
+        $prdb = Proveedor::all();
+        return view('producto.create', compact('prdb'));
     }
 
     /**
@@ -30,15 +34,15 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        //     'nombre' => 'required|string|max:50',
-        //     'apellido' => 'required|string|max:50',
-        //     'fecha_contratacion' => 'required|date',
-        //     'telefono' => 'required|numeric',
-        //     'correo' => 'required|email|unique:clientes,correo|max:100',
-        //     'rol' => 'required|string|max:50',
-        // ]);
+        $request->validate([
+            'nombre_producto' => 'required|string|max:100',
+            'descripcion' => 'required|string|max:255',
+            'proveedor' => 'required|exists:proveedores,ID',
+            'categoria' => 'required|exists:categorias,ID',
+            'cantidad_en_stock' => 'required|numeric',
+            'precio' => 'required|numeric',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
 
         $datosProductos = request()->except('_token');
         $imagen = $request->file('foto');

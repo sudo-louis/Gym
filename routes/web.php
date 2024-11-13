@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ProductoController;
@@ -25,6 +26,7 @@ Route::resource('empleado', EmpleadoController::class)->middleware('auth');
 Route::resource('cliente', ClienteController::class)->middleware('auth');
 Route::resource('proveedor', ProveedorController::class)->middleware('auth');
 Route::resource('producto', ProductoController::class)->middleware('auth');
+Route::resource('categoria', CategoriaController::class)->middleware('auth');
 // Route::resource('servicio', ServicioController::class)->middleware('auth');
 Route::get('/indexadmin/indexadmin', function () {
     return view('/indexadmin/indexadmin');
