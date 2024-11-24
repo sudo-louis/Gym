@@ -1,14 +1,12 @@
-@include('/plantilla/navbar')
+@include('/plantilla/navbarAdmins')
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Index</title>
 </head>
-
 <body>
     <div class="grid justify-center"
         style="background-image: url('/storage/nosotros.jpg'); height: 57rem; background-repeat: no-repeat; background-size: cover; background-position: center center;">
@@ -34,6 +32,7 @@
                             <li>°Listar</li>
                             <li>°Agregar</li>
                             <li>°Editar</li>
+                            <li>°ELIMINAR</li>
                         </ol>
                     </p>
                 </a>
@@ -49,6 +48,7 @@
                             <li>°Listar</li>
                             <li>°Agregar</li>
                             <li>°Editar</li>
+                            <li>°ELIMINAR</li>
                         </ol>
                     </p>
                 </a>
@@ -64,6 +64,7 @@
                             <li>°Listar</li>
                             <li>°Agregar</li>
                             <li>°Editar</li>
+                            <li>°ELIMINAR</li>
                         </ol>
                     </p>
                 </a>
@@ -79,6 +80,7 @@
                             <li>°Listar</li>
                             <li>°Agregar</li>
                             <li>°Editar</li>
+                            <li>°ELIMINAR</li>
                         </ol>
                     </p>
                 </a>
@@ -94,6 +96,7 @@
                             <li>°Listar</li>
                             <li>°Agregar</li>
                             <li>°Editar</li>
+                            <li>°ELIMINAR</li>
                         </ol>
                     </p>
                 </a>
@@ -109,6 +112,7 @@
                             <li>°Listar</li>
                             <li>°Agregar</li>
                             <li>°Editar</li>
+                            <li>°ELIMINAR</li>
                         </ol>
                     </p>
                 </a>
@@ -120,5 +124,4 @@
         @include('plantilla/footer')
     </footer>
 </body>
-
 </html>

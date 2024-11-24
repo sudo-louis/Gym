@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Producto;
 use App\Models\Proveedor;
 use Illuminate\Http\Request;
@@ -16,8 +17,9 @@ class ProductoController extends Controller
         $productos=Producto::paginate(5);
 
         $prdb = Proveedor::all();
+        $ctdb = Categoria::all();
 
-        return view('producto.index',compact("productos", "prdb"));
+        return view('producto.index',compact("productos", "prdb", "ctdb"));
     }
 
     /**
@@ -26,7 +28,8 @@ class ProductoController extends Controller
     public function create()
     {
         $prdb = Proveedor::all();
-        return view('producto.create', compact('prdb'));
+        $ctdb = Categoria::all();
+        return view('producto.create', compact('prdb', 'ctdb'));
     }
 
     /**
@@ -70,8 +73,10 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
+        $prdb = Proveedor::all();
+        $ctdb = Categoria::all();
         $producto = Producto::findOrFail($id);
-        return view('producto.edit', compact('producto'));
+        return view('producto.edit', compact('producto', 'prdb', 'ctdb'));
     }
 
     /**

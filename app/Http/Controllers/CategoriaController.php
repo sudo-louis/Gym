@@ -30,9 +30,17 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        Categoria::insert($datosCategoria);
-        return redirect()->route('categoria.index')->with('success', 'Categoría registrado con éxito.');
+        $request->validate([
+            'nombre_categoria' => 'required|string|max:100',
+        ]);
+
+        $datosCategoria = $request->except('_token');
+
+        Categoria::create($datosCategoria);
+
+        return redirect()->route('categoria.index')->with('success', 'Categoría registrada con éxito.');
     }
+
 
     /**
      * Display the specified resource.
@@ -56,10 +64,17 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Categoria::where('ID','=',$id);
-        $categoria = categoria::findOrFail($id);
-        return redirect()->route('categoria.index')->with('success', 'Categoria actualizado con éxito.');
+        $request->validate([
+            'nombre_categoria' => 'required|string|max:100',
+        ]);
+
+        $datosCategoria = $request->except(['_token', '_method']);
+
+        Categoria::where('ID', '=', $id)->update($datosCategoria);
+
+        return redirect()->route('categoria.index')->with('success', 'Categoría actualizada con éxito.');
     }
+
 
     /**
      * Remove the specified resource from storage.
