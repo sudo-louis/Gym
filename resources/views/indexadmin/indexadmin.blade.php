@@ -34,6 +34,7 @@
                             <li>°Listar</li>
                             <li>°Agregar</li>
                             <li>°Editar</li>
+                            <li>°Eliminar</li>
                         </ol>
                     </p>
                 </a>
@@ -49,6 +50,7 @@
                             <li>°Listar</li>
                             <li>°Agregar</li>
                             <li>°Editar</li>
+                            <li>°Eliminar</li>
                         </ol>
                     </p>
                 </a>
@@ -64,6 +66,7 @@
                             <li>°Listar</li>
                             <li>°Agregar</li>
                             <li>°Editar</li>
+                            <li>°Eliminar</li>
                         </ol>
                     </p>
                 </a>
@@ -79,6 +82,7 @@
                             <li>°Listar</li>
                             <li>°Agregar</li>
                             <li>°Editar</li>
+                            <li>°Eliminar</li>
                         </ol>
                     </p>
                 </a>
@@ -94,6 +98,7 @@
                             <li>°Listar</li>
                             <li>°Agregar</li>
                             <li>°Editar</li>
+                            <li>°Eliminar</li>
                         </ol>
                     </p>
                 </a>
@@ -109,6 +114,7 @@
                             <li>°Listar</li>
                             <li>°Agregar</li>
                             <li>°Editar</li>
+                            <li>°Eliminar</li>
                         </ol>
                     </p>
                 </a>

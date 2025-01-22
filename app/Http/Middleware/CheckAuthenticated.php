@@ -10,8 +10,8 @@ class CheckAuthenticated
 {
     public function handle($request, Closure $next)
     {
-        if (!auth()->guard('admins')->check()) {
-            return redirect('/admins/login');
+        if (!auth()->guard('admins')->check() && !auth()->guard('web')->check()) {
+            return redirect('/');
         }
 
         return $next($request);

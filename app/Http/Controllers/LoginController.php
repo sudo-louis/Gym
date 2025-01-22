@@ -9,38 +9,29 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller {
 
-    public function __construct() {
-        // Agrega encabezados para evitar el caché
-        $this->middleware(function ($request, $next) {
-            header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-            header("Pragma: no-cache");
-            header("Expires: 0");
-            return $next($request);
-        });
-    }
-
     public function login(Request $request) {
-        $credentials = [
-            "email" => $request->email,
-            "password" => $request->password,
-            //"active" => true
-        ];
-        $remember = ($request->has('remember')?true:false);
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-        if (Auth::attempt($credentials,$remember)) {
-            $request->session()->regenerate();
-            return redirect()->intended(route('indexadmin'));
-        } else {
-            return redirect('/');
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::guard('admins')->attempt($credentials)) {
+            return redirect()->intended('/indexadmin/indexadmin');
         }
+
+        return back()->withErrors([
+            'email' => 'Las credenciales no coinciden con nuestros registros.',
+        ]);
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request){
         Auth::logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Sesión cerrada correctamente.');
     }
 }

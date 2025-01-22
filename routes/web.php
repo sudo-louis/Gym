@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
@@ -23,40 +22,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('empleado', EmpleadoController::class)->middleware('auth');
-Route::resource('cliente', ClienteController::class)->middleware('auth');
-Route::resource('proveedor', ProveedorController::class)->middleware('auth');
-Route::resource('producto', ProductoController::class)->middleware('auth');
-Route::resource('categoria', CategoriaController::class)->middleware('auth');
-Route::delete('/admin/{admin}', [AdminsController::class, 'destroy'])->name('admin.destroy')->middleware('auth');
 
-//Login para empleados
-Route::get('/indexadmin/indexadmin', function () {
-    return view('/indexadmin/indexadmin');
-})->middleware('auth')->name('indexadmin');
-Route::post('/indexadmin/indexadmin',[LoginController::class, 'login'])->name('indexadmin');
-Route::middleware(['web'])->group(function () {
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-});
-
-//Login para Admins
-Route::view('admins/login', '/admins/login');
-Route::post('/admins/index', [AdminsController::class, 'login'])->name('admins.login');
+//INICIO DE SESIÓN CON TABLA ADMINS
+Route::post('/indexadmin/indexadmin', [LoginController::class, 'login'])->name('login');
 
 Route::middleware(['auth.custom'])->group(function () {
-    Route::view('/admins/index', '/admins/index');
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/indexadmin/indexadmin', function () {
+        return view('/indexadmin/indexadmin');
+    })->name('indexadmin');
     Route::resource('empleado', EmpleadoController::class);
     Route::resource('cliente', ClienteController::class);
     Route::resource('proveedor', ProveedorController::class);
     Route::resource('producto', ProductoController::class);
     Route::resource('categoria', CategoriaController::class);
-
-    Route::get('/admin/index', [AdminsController::class, 'index'])->name('admin.index');
-    Route::get('/admin/create', [AdminsController::class, 'create'])->name('admin.create');
-    Route::post('/admin', [AdminsController::class, 'store'])->name('admin.store');
-    Route::get('/admin/{admin}/edit', [AdminsController::class, 'edit'])->name('admin.edit');
-    Route::put('/admin/{admin}', [AdminsController::class, 'update'])->name('admin.update');
-    Route::delete('/admin/{admin}', [AdminsController::class, 'destroy'])->name('admin.destroy');
 });
 
 Route::view('/plantilla/navbar', '/plantilla/navbar');
