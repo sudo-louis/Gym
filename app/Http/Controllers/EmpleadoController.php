@@ -31,7 +31,7 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request) {
         $request->validate([
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif|max:2048',
             'nombre' => 'required|string|max:50',
             'apellido' => 'required|string|max:50',
             'fecha_contratacion' => 'required|date',
@@ -58,7 +58,7 @@ class EmpleadoController extends Controller
      */
     public function show(Empleado $empleado)
     {
-        
+
     }
 
     /**
@@ -75,13 +75,13 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, $id) {
         $request->validate([
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'nombre' => 'required|string|max:50',
-            'apellido' => 'required|string|max:50',
-            'fecha_contratacion' => 'required|date',
-            'telefono' => 'required|numeric',
-            'correo' => 'required|email|max:100',
-            'rol' => 'required|string|max:50',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif|max:2048',
+            'nombre' => 'string|max:50',
+            'apellido' => 'string|max:50',
+            'fecha_contratacion' => 'date',
+            'telefono' => 'numeric',
+            'correo' => 'email|max:100',
+            'rol' => 'string|max:50',
         ]);
 
         $datosEmpleado = request()->except(['_token', '_method']);
@@ -93,7 +93,7 @@ class EmpleadoController extends Controller
             $datosEmpleado['foto'] = $nombreImagen;
         }
 
-        Empleado::where('ID','=',$id)->update($datosEmpleado);
+        Empleado::where('id','=',$id)->update($datosEmpleado);
         $empleado = Empleado::findOrFail($id);
         return redirect()->route('empleado.index')->with('success', 'Empleado actualizado con éxito.');
     }
@@ -103,7 +103,7 @@ class EmpleadoController extends Controller
      */
     public function destroy($id)
     {
-        Empleado::where('ID','=',$id)->delete();
+        Empleado::where('id','=',$id)->delete();
         return redirect('empleado');
     }
 }

@@ -40,11 +40,11 @@ class ProductoController extends Controller
         $request->validate([
             'nombre_producto' => 'required|string|max:100',
             'descripcion' => 'required|string|max:255',
-            'proveedor' => 'required|exists:proveedores,ID',
-            'categoria' => 'required|exists:categorias,ID',
+            'proveedor' => 'required|exists:proveedores,id',
+            'categoria' => 'required|exists:categorias,id',
             'cantidad_en_stock' => 'required|numeric',
             'precio' => 'required|numeric',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif|max:2048',
         ]);
 
         $datosProductos = request()->except('_token');
@@ -84,15 +84,15 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        //     'nombre' => 'required|string|max:50',
-        //     'apellido' => 'required|string|max:50',
-        //     'fecha_contratacion' => 'required|date',
-        //     'telefono' => 'required|numeric',
-        //     'correo' => 'required|email|max:100',
-        //     'rol' => 'required|string|max:50',
-        // ]);
+        $request->validate([
+            'nombre_producto' => 'string|max:100',
+            'descripcion' => 'string|max:255',
+            'proveedor' => 'exists:proveedores,id',
+            'categoria' => 'exists:categorias,id',
+            'cantidad_en_stock' => 'numeric',
+            'precio' => 'numeric',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif|max:2048',
+        ]);
 
         $datosProductos = request()->except(['_token', '_method']);
         $imagen = $request->file('foto');
@@ -103,7 +103,7 @@ class ProductoController extends Controller
             $datosProductos['foto'] = $nombreImagen;
         }
 
-        Producto::where('ID','=',$id)->update($datosProductos);
+        Producto::where('id','=',$id)->update($datosProductos);
         $producto = Producto::findOrFail($id);
         return redirect()->route('producto.index')->with('success', 'producto actualizado con éxito.');
     }
@@ -113,7 +113,7 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        Producto::where('ID','=',$id)->delete();
+        Producto::where('id','=',$id)->delete();
         return redirect('producto');
     }
 }

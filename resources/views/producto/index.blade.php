@@ -49,7 +49,7 @@
                 @foreach ($productos as $producto)
                     <tr class="text-center odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{$producto->ID}}
+                            {{$producto->id}}
                         </th>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <center>
@@ -75,8 +75,8 @@
                             {{$producto->precio}}
                         </td>
                         <td class="px-6 py-4">
-                            <a href="{{URL('/producto/'.$producto->ID.'/edit')}}">Editar</a>
-                            <form action="{{URL('/producto/'.$producto->ID)}}" method="POST">
+                            <a href="{{URL('/producto/'.$producto->id.'/edit')}}">Editar</a>
+                            <form action="{{URL('/producto/'.$producto->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <input style="cursor: pointer; color: red" type="submit" value="Eliminar" onclick="return confirm('¿Desas eliminar este producto?')" />

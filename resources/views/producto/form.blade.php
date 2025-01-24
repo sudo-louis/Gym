@@ -19,19 +19,19 @@
 </div>
 <div class="mb-5">
     <label class="block mb-2 text-sm font-medium text-white dark:text-white" for="proveedor">Selecciona un Proveedor: </label>
-    <select name="proveedor_id" id="proveedor" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    <select name="proveedor" id="proveedor" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <option disabled selected>-- Selecciona un proveedor --</option>
         @foreach($prdb as $proveedor)
-            <option value="{{ $proveedor->ID }}">{{ $proveedor->nombre_empresa }}</option>
+            <option value="{{ $proveedor->id }}">{{ $proveedor->nombre_contacto }}</option>
         @endforeach
     </select>
 </div>
 <div class="mb-5">
     <label class="block mb-2 text-sm font-medium text-white dark:text-white" for="categoria">Selecciona un categoría: </label>
-    <select name="categoria_id" id="categoria" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    <select name="categoria" id="categoria" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <option disabled selected>-- Selecciona un categoría --</option>
         @foreach($ctdb as $categoria)
-            <option value="{{ $categoria->ID }}">{{ $categoria->nombre_categoria }}</option>
+            <option value="{{ $categoria->id }}">{{ $categoria->nombre_categoria }}</option>
         @endforeach
     </select>
 </div>

@@ -70,7 +70,7 @@ class CategoriaController extends Controller
 
         $datosCategoria = $request->except(['_token', '_method']);
 
-        Categoria::where('ID', '=', $id)->update($datosCategoria);
+        Categoria::where('id', '=', $id)->update($datosCategoria);
 
         return redirect()->route('categoria.index')->with('success', 'Categoría actualizada con éxito.');
     }
@@ -81,7 +81,7 @@ class CategoriaController extends Controller
      */
     public function destroy(string $id)
     {
-        Categoria::where('ID','=',$id)->delete();
+        Categoria::where('id','=',$id)->delete();
         return redirect('categoria');
     }
 }

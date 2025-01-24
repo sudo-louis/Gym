@@ -37,7 +37,7 @@ class ClienteController extends Controller
             'correo' => 'required|email|unique:clientes,correo',
             'fecha_registro' => 'required|date',
             'status' => 'nullable|string',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif|max:2048'
         ]);
 
         $datosCliente = request()->except('_token');
@@ -58,7 +58,7 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        
+
     }
 
     /**
@@ -75,13 +75,13 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id) {
         $request->validate([
-            'nombre' => 'required|string|max:50',
-            'apellido' => 'required|string|max:50',
-            'telefono' => 'required|numeric',
-            'correo' => 'required|email',
-            'fecha_registro' => 'required|date',
+            'nombre' => 'string|max:50',
+            'apellido' => 'string|max:50',
+            'telefono' => 'numeric',
+            'correo' => 'email',
+            'fecha_registro' => 'date',
             'status' => 'nullable|string',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif|max:2048'
         ]);
 
         $datosCliente = request()->except(['_token', '_method']);
@@ -93,7 +93,7 @@ class ClienteController extends Controller
             $datosCliente['foto'] = $nombreImagen;
         }
 
-        Cliente::where('ID','=',$id)->update($datosCliente);
+        Cliente::where('id','=',$id)->update($datosCliente);
         $cliente = Cliente::findOrFail($id);
         return redirect()->route('cliente.index')->with('success', 'Cliente actualizado con éxito.');
     }
@@ -103,7 +103,7 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        Cliente::where('ID','=',$id)->delete();
+        Cliente::where('id','=',$id)->delete();
         return redirect('cliente');
     }
 }

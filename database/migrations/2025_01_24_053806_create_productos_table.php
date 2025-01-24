@@ -15,18 +15,25 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_producto', 100);
             $table->string('descripcion', 255);
-            $table->integer('proveedor');
-            $table->integer('categoria');
+            $table->unsignedBigInteger('proveedor');
+            $table->unsignedBigInteger('categoria');
             $table->integer('cantidad_en_stock');
             $table->decimal('precio', 10, 2);
             $table->string('foto', 255);
             $table->timestamps();
+
+            $table->foreign('proveedor')
+                    ->references('id')
+                    ->on('proveedores')
+                    ->onDelete('cascade');
+
+            $table->foreign('categoria')
+                    ->references('id')
+                    ->on('categorias')
+                    ->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('productos');

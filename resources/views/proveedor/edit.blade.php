@@ -18,7 +18,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{URL('/proveedor/'.$proveedor->ID)}}" enctype="multipart/form-data" method="POST" class="max-w-sm mx-auto text-center mt-5">
+    <form action="{{URL('/proveedor/'.$proveedor->id)}}" enctype="multipart/form-data" method="POST" class="max-w-sm mx-auto text-center mt-5">
         @csrf
         @method('PATCH')
         @include('proveedor.form')

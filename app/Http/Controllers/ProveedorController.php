@@ -31,7 +31,7 @@ class ProveedorController extends Controller
      */
     public function store(Request $request) {
         $request->validate([
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif|max:2048',
             'nombre_empresa' => 'required|string|max:100',
             'nombre_contacto' => 'required|string|max:50',
             'telefono' => 'required|numeric',
@@ -74,7 +74,7 @@ class ProveedorController extends Controller
      */
     public function update(Request $request, $id) {
         $request->validate([
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,|max:2048',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif|max:2048',
             'nombre_empresa' => 'required|string|max:100',
             'nombre_contacto' => 'required|string|max:50',
             'telefono' => 'required|numeric',
@@ -91,7 +91,7 @@ class ProveedorController extends Controller
             $datosProveedor['foto'] = $nombreImagen;
         }
 
-        Proveedor::where('ID','=',$id)->update($datosProveedor);
+        Proveedor::where('id','=',$id)->update($datosProveedor);
         $proveedor = Proveedor::findOrFail($id);
         return redirect()->route('proveedor.index')->with('success', 'proveedor actualizado con éxito.');
     }
@@ -101,7 +101,7 @@ class ProveedorController extends Controller
      */
     public function destroy($id)
     {
-        Proveedor::where('ID','=',$id)->delete();
+        Proveedor::where('id','=',$id)->delete();
         return redirect('proveedor');
     }
 }
